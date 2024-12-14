@@ -74,6 +74,7 @@ class Ui_MainWindow(object):
         font.setStrikeOut(False)
         font.setKerning(True)
         self.label_pass.setFont(font)
+        self.label_pass.setStyleSheet("color:rgb(85, 170, 0)")
         self.label_pass.setObjectName("label_pass")
         self.pushButton_results = QtWidgets.QPushButton(parent=self.centralwidget)
         self.pushButton_results.setGeometry(QtCore.QRect(220, 330, 75, 23))

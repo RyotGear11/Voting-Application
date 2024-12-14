@@ -118,8 +118,6 @@ class Logic(QMainWindow, Ui_MainWindow):
             self.votes.append([self.line_id.text(), voted_can])
 
         self.line_id.clear()
-        self.radioButton_jane.setChecked(False)
-        self.radioButton_john.setChecked(False)
         self.label_pass.setVisible(False)
 
         self.pushButton_submit.setEnabled(False)
@@ -156,11 +154,11 @@ class Logic(QMainWindow, Ui_MainWindow):
                 self.john_votes += 1
             elif row[1] == 'Jane':
                 self.jane_votes += 1
-
+        self.reset_new()
         results = f'John: {self.john_votes} Votes\nJane: {self.jane_votes} Votes'
         QMessageBox.information(self, 'Voting Results', results)
 
-        self.reset_new()
+
 
 
     def reset_new(self) -> None:
@@ -178,6 +176,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.pushButton_results.setVisible(False)
         self.pushButton_submit.setEnabled(True)
         self.user_voted = False
+
 
     def reset(self) -> None:
         """
