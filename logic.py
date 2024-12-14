@@ -32,8 +32,7 @@ class Logic(QMainWindow, Ui_MainWindow):
     def load_votes(self):
         """
         Loads the 'votes.csv' file
-        :return: A list of rows from 'votes.csv' file or an empty
-        file if it doesn't exist
+        :return: A list of rows from 'votes.csv' file or an empty file if it doesn't exist
         """
         try:
             with open('votes.csv', 'r') as file:
@@ -47,6 +46,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         -If ID is valid, voter is allowed to vote
         -If ID is invalid, voter will receive an error message
         -If ID has already been used, voter will receive a message
+        :return: None
         """
         try:
             id_input = self.line_id.text()
@@ -98,7 +98,8 @@ class Logic(QMainWindow, Ui_MainWindow):
     def submit_vote(self) -> None:
         """
         Submits the vote
-        Depending on radio button selected, vote goes to John or Jane
+        -Depending on radio button selected, vote goes to John or Jane
+        :return: None
         """
         if self.user_voted:
             self.label_pass.setVisible(True)
@@ -131,6 +132,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         """
         Stores vote for John or Jane in 'votes.csv' file
         :param voted_can: Name of candidate
+        :return: None
         """
         vote_id = self.line_id.text()
 
@@ -142,8 +144,9 @@ class Logic(QMainWindow, Ui_MainWindow):
     def show_results(self) -> None:
         """
         Shows the voter the results of the vote
-        Displays the number of votes for each candidate
-        Doing so resets the UI
+        -Displays the number of votes for each candidate
+        -Doing so resets the UI
+        :return: None
         """
         self.john_votes = 0
         self.jane_votes = 0
@@ -163,7 +166,7 @@ class Logic(QMainWindow, Ui_MainWindow):
     def reset_new(self) -> None:
         """
         Resets the UI to their initial state after voting or viewing results
-        :return:
+        :return: None
         """
         self.line_id.clear()
         self.radioButton_john.setChecked(False)
@@ -179,8 +182,9 @@ class Logic(QMainWindow, Ui_MainWindow):
     def reset(self) -> None:
         """
         Resets the voting system
-        Clears the votes and all UI elements
-        Clears 'votes.csv'
+        -Clears the votes and all UI elements
+        -Clears 'votes.csv'
+        :return: None
         """
         with open('votes.csv', 'w', newline='') as file:
             pass
