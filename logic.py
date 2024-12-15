@@ -143,6 +143,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         """
         Shows the voter the results of the vote
         -Displays the number of votes for each candidate
+        -Displays winner
         -Doing so resets the UI
         :return: None
         """
@@ -154,8 +155,15 @@ class Logic(QMainWindow, Ui_MainWindow):
                 self.john_votes += 1
             elif row[1] == 'Jane':
                 self.jane_votes += 1
+
+        if self.john_votes > self.jane_votes:
+            winner = 'John'
+        elif self.jane_votes > self.john_votes:
+            winner = 'Jane'
+        else:
+            winner = 'It\'s a tie!'
         self.reset_new()
-        results = f'John: {self.john_votes} Votes\nJane: {self.jane_votes} Votes'
+        results = f'John: {self.john_votes} Votes\nJane: {self.jane_votes} Votes\nWinner: {winner}'
         QMessageBox.information(self, 'Voting Results', results)
 
 
